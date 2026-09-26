@@ -1,0 +1,96 @@
+{
+    "personality": [
+        {
+            "title_id": "Rasa Ingin Tahu Tinggi",
+            "title_en": "Curious",
+            "desc_id": "Saya senang mengeksplorasi teknologi baru, bereksperimen dengan ide, dan memahami cara kerja sesuatu lebih dalam.",
+            "desc_en": "I enjoy exploring new technologies, experimenting with ideas, and understanding how things work beyond the surface."
+        },
+        {
+            "title_id": "Gigih",
+            "title_en": "Persistent",
+            "desc_id": "Saya percaya setiap tantangan adalah bagian dari proses belajar. Walau progres terasa lambat, saya memilih untuk terus maju.",
+            "desc_en": "I believe every challenge is part of the learning process. Even when progress feels slow, I choose to keep moving forward."
+        },
+        {
+            "title_id": "Bertanggung Jawab",
+            "title_en": "Responsible",
+            "desc_id": "Saya selalu mengingatkan diri bahwa pendidikan dan karier saya bukan hanya untuk masa depan saya sendiri, tapi juga untuk orang-orang yang percaya pada saya, terutama keluarga.",
+            "desc_en": "I always remind myself that my education and career are not only for my own future but also for the people who believe in me, especially my family."
+        },
+        {
+            "title_id": "Berorientasi Perkembangan",
+            "title_en": "Growth-Oriented",
+            "desc_id": "Daripada mengejar kesuksesan instan, saya fokus memperbaiki diri setiap hari lewat pembelajaran konsisten dan pengalaman nyata.",
+            "desc_en": "Rather than chasing quick success, I focus on improving myself every day through consistent learning and real-world experience."
+        }
+    ],
+    "values": [
+        {
+            "title_id": "Konsistensi di Atas Bakat",
+            "title_en": "Consistency Over Talent",
+            "desc_id": "Saya percaya usaha kecil yang konsisten pada akhirnya akan menghasilkan hasil yang berarti. Setiap pencapaian besar dimulai dari kebiasaan sederhana sehari-hari.",
+            "desc_en": "I believe that small, consistent efforts will eventually create meaningful results. Every big achievement starts from simple daily habits."
+        },
+        {
+            "title_id": "Tanggung Jawab",
+            "title_en": "Responsibility",
+            "desc_id": "Kesuksesan bukan hanya soal mencapai tujuan pribadi, tapi juga memenuhi tanggung jawab kepada diri sendiri, keluarga, dan masa depan yang ingin saya bangun.",
+            "desc_en": "Success is not only about reaching personal goals but also about fulfilling responsibilities toward myself, my family, and the future I want to build."
+        },
+        {
+            "title_id": "Belajar Seumur Hidup",
+            "title_en": "Lifelong Learning",
+            "desc_id": "Teknologi berkembang setiap hari, dan saya percaya pembelajaran berkelanjutan adalah kunci untuk tetap relevan dan menciptakan solusi yang bermakna.",
+            "desc_en": "Technology evolves every day, and I believe continuous learning is the key to staying relevant and creating meaningful solutions."
+        },
+        {
+            "title_id": "Integritas & Kualitas",
+            "title_en": "Integrity & Quality",
+            "desc_id": "Saya percaya bahwa kode yang baik tidak hanya sekadar berfungsi, tetapi juga bersih, aman, dan dapat diandalkan. Kejujuran dalam proses pengembangan adalah fondasi solusi digital yang kokoh.",
+            "desc_en": "I believe good code doesn't just work—it must be clean, secure, and reliable. Honesty and precision throughout the development process build truly robust digital solutions."
+        }
+    ],
+    "interests": [
+        {
+            "icon": "🌐",
+            "title_id": "Pengembangan Web",
+            "title_en": "Web Development"
+        },
+        {
+            "icon": "⛓️",
+            "title_id": "Web3 & Blockchain",
+            "title_en": "Web3 & Blockchain"
+        },
+        {
+            "icon": "🤖",
+            "title_id": "Otomasi dengan n8n",
+            "title_en": "Automation with n8n"
+        },
+        {
+            "icon": "🎨",
+            "title_id": "Desain UI\/UX",
+            "title_en": "UI\/UX Design"
+        },
+        {
+            "icon": "🎵",
+            "title_id": "Musik",
+            "title_en": "Music"
+        },
+        {
+            "icon": "⚽",
+            "title_id": "Futsal",
+            "title_en": "Futsal"
+        },
+        {
+            "icon": "🎮",
+            "title_id": "Gaming",
+            "title_en": "Gaming"
+        },
+        {
+            "icon": "✈️",
+            "title_id": "Traveling",
+            "title_en": "Traveling"
+        }
+    ]
+}

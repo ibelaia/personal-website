@@ -1,0 +1,25 @@
+{
+    "en": {
+        "badge": "GET IN TOUCH",
+        "title": "Let's Work Together.",
+        "desc": "Have a project in mind or want to collaborate? I'd love to hear from you. Let's create something amazing together!",
+        "email_sub": "Drop me a message",
+        "wa_sub": "Let's chat",
+        "loc_sub": "WIB (GMT +7)",
+        "avail_sub": "Internship & Projects"
+    },
+    "id": {
+        "badge": "HUBUNGI SAYA",
+        "title": "Mari Bekerja Bersama.",
+        "desc": "Punya proyek atau ingin berkolaborasi? Saya akan sangat senang mendengarnya. Mari buat sesuatu yang hebat bersama!",
+        "email_sub": "Kirimkan pesan",
+        "wa_sub": "Mari mengobrol",
+        "loc_sub": "WIB (GMT +7)",
+        "avail_sub": "Magang & Proyek"
+    },
+    "email": "ibezlaia@gmail.com",
+    "whatsapp": "+62 812-3015-6692",
+    "wa_link": "https:\/\/wa.me\/6281230156692",
+    "location": "Surabaya, Indonesia",
+    "availability": "Open for Work"
+}

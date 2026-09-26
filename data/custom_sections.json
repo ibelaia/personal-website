@@ -1,0 +1,49 @@
+[
+    {
+        "id": "sec_1790118605",
+        "slug": "system-development-software-architecture",
+        "title_id": "Pengembangan Sistem & Arsitektur Perangkat Lunak",
+        "title_en": "System Development & Software Architecture",
+        "eyebrow_id": "KARYA & EKSPERIMEN",
+        "eyebrow_en": "WORK & EXPERIMENTS",
+        "teaser_id": "Eksplorasi mendalam mengenai rancangan fungsional, pengelolaan database, dan efisiensi kode.",
+        "teaser_en": "In-depth exploration of functional design, database management, and code efficiency.",
+        "publish_status": "home",
+        "home_layout": "cards",
+        "btn_text_id": "Pelajari Lebih Lanjut →",
+        "btn_text_en": "Learn More →",
+        "created_at": "2026-09-23 01:10:05",
+        "blocks": [
+            {
+                "type": "story",
+                "image_position": "right",
+                "image": "assets\/img\/block_img_1790118605_897.png",
+                "body_id": "Dalam membangun sistem digital skala menengah hingga besar, konsistensi struktur kode dan pemisahan logika kontroler menjadi kunci utama pemeliharaan jangka panjang. Melalui pengelolaan server lokal menggunakan XAMPP dan basis data relasional MySQL, setiap modul dirancang agar responsif dan aman.",
+                "body_en": "In building medium to large-scale digital systems, code structure consistency and controller logic separation serve as the key to long-term maintenance. Through local server management using XAMPP and relational MySQL databases, every module is designed to be responsive and secure."
+            },
+            {
+                "type": "timeline",
+                "items": [
+                    {
+                        "year": "2026",
+                        "title_id": "Implementasi Sistem Manajemen Perpustakaan",
+                        "title_en": "Library Management System Implementation",
+                        "desc_id": "Perancangan aplikasi berbasis desktop dan web untuk otomatisasi peminjaman buku, manajemen denda, dan pencatatan inventaris perpustakaan secara terstruktur.",
+                        "desc_en": "Design of desktop and web-based applications for automated book lending, fine management, and structured library inventory recording.",
+                        "takeaway_id": "Otomatisasi proses manual secara signifikan mengurangi tingkat kesalahan operasional.",
+                        "takeaway_en": ""
+                    },
+                    {
+                        "year": "2026",
+                        "title_id": "Pengembangan Proyek Kolaborasi & E-Commerce",
+                        "title_en": "Collaboration Projects & E-Commerce Development",
+                        "desc_id": "Pembangunan platform e-commerce dan sistem silsilah keluarga berbasis web dengan pendekatan full-stack yang mengutamakan kenyamanan pengguna (user experience).",
+                        "desc_en": "Building e-commerce platforms and web-based family tree systems using a full-stack approach that prioritizes user experience.",
+                        "takeaway_id": "Kolaborasi tim dan pemahaman kebutuhan pengguna nyata adalah fondasi utama suksesnya produk teknologi.",
+                        "takeaway_en": ""
+                    }
+                ]
+            }
+        ]
+    }
+]

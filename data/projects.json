@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "smart-agrisense-iot-platform",
+    "title": "Smart AgriSense IoT Platform",
+    "category": "Internet of Things (IoT)",
+    "overview": "Sistem pemantauan kelembapan tanah otomatis dan kendali pompa irigasi berbasis mikrokontroler ESP32.",
+    "thumbnail": "",
+    "location": "home"
+  },
+  {
+    "slug": "ui-design-projects",
+    "title": "UI/UX Design Projects Collection",
+    "category": "UI/UX Design",
+    "overview": "Arsip komprehensif eksplorasi desain antarmuka mobile, sistem desain, dan prototipe interaktif.",
+    "thumbnail": "",
+    "location": "home"
+  },
+  {
+    "slug": "nexusflow-analytics-platform",
+    "title": "NexusFlow Analytics Platform",
+    "category": "Full-Stack System",
+    "overview": "Enterprise-grade analytics engine delivering real-time telemetry processing.",
+    "thumbnail": "",
+    "location": "home"
+  }
+]

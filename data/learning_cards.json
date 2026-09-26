@@ -1,0 +1,32 @@
+[
+    {
+        "icon": "🌐",
+        "title_id": "Pengembangan Web laia",
+        "title_en": "Web Development laia",
+        "skills": "HTML5, CSS3, JavaScript (ES6+), PHP, Laravel"
+    },
+    {
+        "icon": "⚙️",
+        "title_id": "Pengembangan Backend",
+        "title_en": "Backend Development",
+        "skills": "PHP OOP, MySQL Database, RESTful API, Supabase"
+    },
+    {
+        "icon": "🎨",
+        "title_id": "Desain UI\/UX",
+        "title_en": "UI\/UX Design",
+        "skills": "Figma, Responsive Design, Wireframing, Design Systems"
+    },
+    {
+        "icon": "⛓️",
+        "title_id": "Pengembangan Web3",
+        "title_en": "Web3 Development",
+        "skills": "Solidity, Smart Contracts, Ethereum, Remix IDE"
+    },
+    {
+        "icon": "🤖",
+        "title_id": "Otomasi & Alat Produktivitas",
+        "title_en": "Automation & Tools",
+        "skills": "n8n Workflow, Git & GitHub, Postman API, VS Code"
+    }
+]

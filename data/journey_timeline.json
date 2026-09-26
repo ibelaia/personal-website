@@ -1,0 +1,38 @@
+[
+    {
+        "badge": "🌱 2024",
+        "title_id": "Menemukan Minat Saya",
+        "title_en": "Discovering My Passion",
+        "desc_id": "Pada tahun 2024, saya memulai perjalanan sebagai mahasiswa Informatika di UPN \"Veteran\" Jawa Timur. Saya mempelajari dasar pemrograman C, C++, dan Python sembari memahami algoritma serta pemecahan masalah.",
+        "desc_en": "In 2024, I began my journey as an Informatics student at UPN \"Veteran\" Jawa Timur. During this year, I learned the fundamentals of programming through C, C++, and Python while building my understanding of algorithms.",
+        "learn_id": "Setiap ahli memulai langkahnya dengan menguasai hal mendasar.",
+        "learn_en": "Every expert begins by mastering the fundamentals."
+    },
+    {
+        "badge": "🚀 2025",
+        "title_id": "Membangun Fondasi yang Kuat",
+        "title_en": "Building Strong Foundations",
+        "desc_id": "Seiring bertambahnya pemahaman, saya mulai menerapkan ilmu lewat proyek akademik dan mandiri seperti sistem perpustakaan Java dan desain antarmuka aplikasi.",
+        "desc_en": "As my understanding grew, I started applying what I had learned through academic and personal projects such as Java systems and UI\/UX designs.",
+        "learn_id": "Kemajuan datang dari latihan nyata, bukan dari kesempurnaan instan.",
+        "learn_en": "Progress comes from practice, not perfection."
+    },
+    {
+        "badge": "💡 2026",
+        "title_id": "Menciptakan Solusi Nyata",
+        "title_en": "Creating Real-World Solutions",
+        "desc_id": "Tahun 2026 menjadi fase menantang di mana saya membangun portofolio pribadi, platform web e-commerce, dan sistem silsilah keluarga digital.",
+        "desc_en": "In 2026, I challenged myself with more advanced projects. I started building my personal website portfolio and client-based web platforms.",
+        "learn_id": "Teknologi memberi dampak terbesar ketika mampu menyelesaikan masalah nyata.",
+        "learn_en": "Technology creates the greatest impact when it solves real problems."
+    },
+    {
+        "badge": "📍 Present",
+        "title_id": "Terus Bertumbuh",
+        "title_en": "Still Growing",
+        "desc_id": "Saat ini, saya terus memperluas wawasan di bidang Full-Stack Development, Web3, UI\/UX Design, dan rekayasa perangkat lunak.",
+        "desc_en": "Today, I continue expanding my knowledge in Full-Stack Development, Web3, UI\/UX Design, and software engineering.",
+        "learn_id": "Pertumbuhan adalah perjalanan berkelanjutan, bukan sekadar garis akhir.",
+        "learn_en": "Growth is a continuous journey, not a destination."
+    }
+]

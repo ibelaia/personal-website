@@ -1,0 +1,17 @@
+[
+    {
+        "year": "2024",
+        "desc_id": "Membangun program pertama menggunakan C, C++, dan Python sambil memahami konsep logika dan algoritma.",
+        "desc_en": "Built my first programs using C, C++, and Python while learning core computational logic and algorithms."
+    },
+    {
+        "year": "2025",
+        "desc_id": "Menyelesaikan aplikasi desktop Java pertama dan mulai mendalami prinsip desain UI\/UX modern.",
+        "desc_en": "Completed my first Java desktop application and explored modern UI\/UX design principles."
+    },
+    {
+        "year": "2026",
+        "desc_id": "Mulai mengembangkan website klien, website portofolio, serta mempelajari Full-Stack Development dan Web3.",
+        "desc_en": "Started developing client-based websites and portfolio projects while learning Full-Stack & Web3."
+    }
+]

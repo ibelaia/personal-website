@@ -1,0 +1,30 @@
+[
+    {
+        "icon": "🖥",
+        "label_id": "Mulai Coding",
+        "label_en": "Started Coding",
+        "val_id": "2024",
+        "val_en": "2024"
+    },
+    {
+        "icon": "📚",
+        "label_id": "Status Saat Ini",
+        "label_en": "Current Status",
+        "val_id": "Mahasiswa Informatika",
+        "val_en": "Informatics Student"
+    },
+    {
+        "icon": "🚀",
+        "label_id": "Fokus Saat Ini",
+        "label_en": "Current Focus",
+        "val_id": "Full-Stack & Web3",
+        "val_en": "Full-Stack & Web3"
+    },
+    {
+        "icon": "🎯",
+        "label_id": "Target Masa Depan",
+        "label_en": "Future Goal",
+        "val_id": "Software Engineer",
+        "val_en": "Software Engineer"
+    }
+]

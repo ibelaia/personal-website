@@ -1,0 +1,4 @@
+# Mengabaikan file sistem dan editor
+.DS_Store
+Thumbs.db
+.vscode/

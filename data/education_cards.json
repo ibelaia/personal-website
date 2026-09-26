@@ -1,0 +1,82 @@
+{
+    "schools": [
+        {
+            "period": "📍 2012–2017",
+            "level_id": "Sekolah Dasar",
+            "level_en": "Primary School",
+            "school_id": "SD Methodist 5 Medan",
+            "school_en": "SD Methodist 5 Medan",
+            "desc_id": "Di sinilah saya menghabiskan sebagian besar masa kecil. Selain membangun pengetahuan dasar, saya mengembangkan rasa ingin tahu, disiplin, dan rasa percaya diri yang menjadi bekal penting dalam perjalanan akademik saya.",
+            "desc_en": "This was where I spent most of my childhood. Besides gaining foundational knowledge, I developed curiosity, discipline, and confidence that later became important throughout my academic journey.",
+            "highlights": "Curiosity, Discipline, Confidence"
+        },
+        {
+            "period": "📍 2017–2018",
+            "level_id": "Sekolah Dasar — Awal yang Baru",
+            "level_en": "Primary School — A New Beginning",
+            "school_id": "SD Bintang Laut, Nias Selatan",
+            "school_en": "SD Bintang Laut, South Nias",
+            "desc_id": "Setelah pindah ke Nias Selatan, saya menyelesaikan tahun terakhir SD di lingkungan yang sama sekali baru. Beradaptasi dengan teman sekelas dan guru baru mengajarkan saya ketangguhan dan pentingnya menyambut perubahan.",
+            "desc_en": "After moving to South Nias, I completed my final year of elementary school in a completely new environment. Adapting to new classmates, teachers, and surroundings taught me resilience and the importance of embracing change.",
+            "highlights": "Adaptability, Resilience"
+        },
+        {
+            "period": "📍 2018–2021",
+            "level_id": "Sekolah Menengah Pertama laia",
+            "level_en": "Junior High School",
+            "school_id": "SMP Swasta Bintang Laut, Nias Selatan",
+            "school_en": "SMP Swasta Bintang Laut, South Nias",
+            "desc_id": "Melanjutkan ke jenjang SMP di sekolah yang sama membuat saya beradaptasi lebih nyaman. Minat saya pada matematika dan sains terus bertumbuh, menjadi fondasi bagi studi teknologi di masa depan.",
+            "desc_en": "Continuing at the same school into junior high allowed me to adapt more comfortably to my new surroundings. During these years, my interest in mathematics and science continued to grow, laying the foundation for my future studies in technology.",
+            "highlights": "Mathematics, Science, Logical Thinking"
+        },
+        {
+            "period": "📍 2021–2024",
+            "level_id": "Sekolah Menengah Atas",
+            "level_en": "Senior High School",
+            "school_id": "SMA Negeri 1 Teluk Dalam",
+            "school_en": "SMA Negeri 1 Teluk Dalam",
+            "desc_id": "Masa SMA menjadi titik balik perjalanan akademik saya. Saya aktif mengikuti kompetisi, meraih medali di olimpiade matematika dan fisika tingkat nasional yang memperkuat pemikiran analitis saya.",
+            "desc_en": "High school became a turning point in my academic life. I actively participated in competitions, earning medals in national-level mathematics and physics competitions that strengthened my analytical thinking.",
+            "highlights": "🏅 National Mathematics Competition — Bronze Medal, 🥇 National Physics Competition — Gold Medal, 🔬 Science Olympiad Participant"
+        }
+    ],
+    "achievements": [
+        {
+            "icon": "🏅",
+            "title_id": "Kompetisi Matematika Nasional",
+            "title_en": "National Mathematics Competition",
+            "desc_id": "Medali Perunggu · 2023",
+            "desc_en": "Bronze Medal · 2023"
+        },
+        {
+            "icon": "🥇",
+            "title_id": "Kompetisi Fisika Nasional",
+            "title_en": "National Physics Competition",
+            "desc_id": "Medali Emas · 2023",
+            "desc_en": "Gold Medal · 2023"
+        },
+        {
+            "icon": "🔬",
+            "title_id": "Olimpiade Sains",
+            "title_en": "Science Olympiad",
+            "desc_id": "Peserta · 2023",
+            "desc_en": "Participant · 2023"
+        }
+    ],
+    "higher_education": [
+        {
+            "period": "📍 2024–Present",
+            "title_id": "Universitas",
+            "title_en": "University",
+            "school_id": "UPN \"Veteran\" Jawa Timur — Sarjana Informatika",
+            "school_en": "UPN \"Veteran\" Jawa Timur — Bachelor of Informatics",
+            "desc_id": "Perkuliahan memperkenalkan saya pada berbagai cabang ilmu komputer, termasuk rekayasa perangkat lunak, algoritma, basis data, pengembangan web, dan banyak bidang lain yang terus memperkokoh fondasi teknis saya.",
+            "desc_en": "University has introduced me to various fields of computer science, including software engineering, algorithms, databases, web development, and many other areas that continue to shape my technical foundation.",
+            "highlights": "Full-Stack Development, Web Development, Web3 Development, UI\/UX Design, Software Engineering",
+            "projects": "Personal Website, Portfolio Website, Library Management System, Client-Based Web Projects, UI\/UX Design, Full-Stack Development, Web3 Development",
+            "summary_id": "Bagi saya, universitas bukan hanya tempat meraih gelar—tetapi tempat mengubah ilmu menjadi pengalaman nyata, menghadapi tantangan baru, dan mempersiapkan diri berkarier di industri teknologi.",
+            "summary_en": "Today, university is more than just earning a degree—it is where I transform knowledge into practical experience, embrace new challenges, and prepare myself for a career in the technology industry."
+        }
+    ]
+}
