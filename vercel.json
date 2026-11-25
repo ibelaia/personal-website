@@ -1,15 +1,28 @@
 {
   "builds": [
     { "src": "index.php", "use": "vercel-php@0.7.1" },
-    { "src": "*.css", "use": "@vercel/static" },
-    { "src": "*.js", "use": "@vercel/static" },
+    { "src": "about.php", "use": "vercel-php@0.7.1" },
+    { "src": "achievement.php", "use": "vercel-php@0.7.1" },
+    { "src": "archive.php", "use": "vercel-php@0.7.1" },
+    { "src": "contact.php", "use": "vercel-php@0.7.1" },
+    { "src": "education.php", "use": "vercel-php@0.7.1" },
+    { "src": "explore.php", "use": "vercel-php@0.7.1" },
+    { "src": "journey.php", "use": "vercel-php@0.7.1" },
+    { "src": "lang/*.json", "use": "@vercel/static" },
     { "src": "**/*.css", "use": "@vercel/static" },
     { "src": "**/*.js", "use": "@vercel/static" },
-    { "src": "**/*.{png,jpg,jpeg,webp,svg,ico}", "use": "@vercel/static" }
+    { "src": "**/*.{png,jpg,jpeg,webp,svg,ico,woff2,woff,ttf,map}", "use": "@vercel/static" }
   ],
   "routes": [
+    { "src": "/about(\\.php)?", "dest": "/about.php" },
+    { "src": "/achievement(\\.php)?", "dest": "/achievement.php" },
+    { "src": "/archive(\\.php)?", "dest": "/archive.php" },
+    { "src": "/contact(\\.php)?", "dest": "/contact.php" },
+    { "src": "/education(\\.php)?", "dest": "/education.php" },
+    { "src": "/explore(\\.php)?", "dest": "/explore.php" },
+    { "src": "/journey(\\.php)?", "dest": "/journey.php" },
     {
-      "src": "/(.*\\.(css|js|png|jpg|jpeg|webp|svg|ico|woff2?|ttf|map))",
+      "src": "/(.*\\.(css|js|json|png|jpg|jpeg|webp|svg|ico|woff2|woff|ttf|map))",
       "dest": "/$1"
     },
     {
