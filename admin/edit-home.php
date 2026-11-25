@@ -1,27 +1,27 @@
 <?php
-$pageTitle = 'Edit Home Hero';
-$topbarTitle = 'Website Content / Home';
+$pageTitle = 'Edit Home Hero';$topbarTitle = 'Website Content / Home';
 
 require_once __DIR__ . '/../supabase.php';
 require_once __DIR__ . '/partials/header.php';
 
-$enPath = __DIR__ . '/../lang/en.json';
-$idPath = __DIR__ . '/../lang/id.json';
+$enPath = __DIR__ . '/../lang/en.json';$idPath = __DIR__ . '/../lang/id.json';
 
-$success = '';
-$error = '';
+$success = '';$error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $enData = file_exists($enPath) ? json_decode(file_get_contents($enPath), true) : [];
-    $idData = file_exists($idPath) ? json_decode(file_get_contents($idPath), true) : [];
+    $enData = file_exists($enPath) ? json_decode(file_get_contents($enPath), true) : [];$idData = file_exists($idPath) ? json_decode(file_get_contents($idPath), true) : [];
+    if (!is_array($enData)) {$enData = [];
+    }
+    if (!is_array($idData)) {$idData = [];
+    }
     $batch = [];
 
     // 1. Upload Foto Profil Baru
-    if (isset($_FILES['hero_image']) && $_FILES['hero_image']['error'] === UPLOAD_ERR_OK) {
+    if (isset($_FILES['hero_image']) &&$_FILES['hero_image']['error'] === UPLOAD_ERR_OK) {
         $ext = strtolower(pathinfo($_FILES['hero_image']['name'], PATHINFO_EXTENSION));
-        if (in_array($ext, ['jpg', 'jpeg', 'png', 'webp'])) {
-            $dest = __DIR__ . '/../assets/img/hero-1.jpg.png';
-            move_uploaded_file($_FILES['hero_image']['tmp_name'], $dest);
+        if (in_array($ext, ['jpg', 'jpeg', 'png', 'webp'], true)) {$dest = __DIR__ . '/../assets/img/hero-1.jpg.png';
+            if (!move_uploaded_file($_FILES['hero_image']['tmp_name'], $dest)) {$error = 'Gagal mengunggah gambar hero.';
+            }
         } else {
             $error = 'Format file foto harus JPG, PNG, atau WebP.';
         }
@@ -30,8 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // 2. Simpan Nama Universal
     $namaLengkap = trim($_POST['hero_name'] ?? '');
     if ($namaLengkap !== '') {
-        $idData['hero.name'] = $namaLengkap;
-        $enData['hero.name'] = $namaLengkap;
+        $idData['hero.name'] =$namaLengkap;
+        $enData['hero.name'] =$namaLengkap;
         $batch[] = [
             'key'        => 'hero.name',
             'id_text'    => $namaLengkap,
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // 3. Simpan Teks Terjemahan (Termasuk Tombol Hero)
     if (isset($_POST['translations']) && is_array($_POST['translations'])) {
-        foreach ($_POST['translations'] as $k => $vals) {
+        foreach ($_POST['translations'] as $k =>$vals) {
             $idVal = trim($vals['id'] ?? '');
             $enVal = trim($vals['en'] ?? '');
 
@@ -53,8 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'updated_at' => date('c')
             ];
 
-            $idData[$k] = $idVal;
-            $enData[$k] = $enVal;
+            $idData[$k] =$idVal;
+            $enData[$k] =$enVal;
         }
     }
 
@@ -62,14 +62,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         supabase('translations', 'POST', $batch, 'on_conflict=key');
         file_put_contents($idPath, json_encode($idData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
         file_put_contents($enPath, json_encode($enData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-        if (!$error) {
-            $success = 'Perubahan Home Hero berhasil disimpan!';
+        if (!$error) {$success = 'Perubahan Home Hero berhasil disimpan!';
         }
     }
 }
 
-$enDict = file_exists($enPath) ? json_decode(file_get_contents($enPath), true) : [];
-$idDict = file_exists($idPath) ? json_decode(file_get_contents($idPath), true) : [];
+$enDict = file_exists($enPath) ? json_decode(file_get_contents($enPath), true) : [];$idDict = file_exists($idPath) ? json_decode(file_get_contents($idPath), true) : [];
+if (!is_array($enDict)) {$enDict = [];
+}
+if (!is_array($idDict)) {$idDict = [];
+}
 
 $currentName = $idDict['hero.name'] ?? ($enDict['hero.name'] ?? 'Ibe Zisokhi Laia');
 
@@ -318,7 +320,7 @@ $heroFields = [
             </div>
 
             <!-- Teks Sapaan, Profesi, Deskripsi -->
-            <?php foreach ($heroFields as $k => $info): ?>
+            <?php foreach ($heroFields as $k =>$info): ?>
                 <div class="field-item">
                     <label><?= htmlspecialchars($info['label']) ?></label>
                     <div class="lang-field lang-id">
@@ -344,7 +346,7 @@ $heroFields = [
             <div>
                 <div class="side-title">📷 Foto Profil Hero</div>
                 <div class="img-upload-box">
-                    <img id="heroImgPreview" src="../assets/img/hero-1.jpg.png?v=<?= time() ?>" class="avatar-thumb" onerror="this.src='https://via.placeholder.com/86'">
+                    <img id="heroImgPreview" src="../assets/img/hero-1.jpg.png?v=<?= time() ?>" class="avatar-thumb" alt="Hero Preview" onerror="this.style.display='none';">
                     <label for="heroImgFile" class="btn-choose-file">Pilih Gambar Hero</label>
                     <input type="file" id="heroImgFile" name="hero_image" accept="image/png, image/jpeg, image/webp" style="display:none;" onchange="previewImg(event, 'heroImgPreview')">
                 </div>
