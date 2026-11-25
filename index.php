@@ -2,6 +2,35 @@
 $page  = 'home';
 $title = 'Home';
 
+if (!function_exists('resolveHomeAchievementImageSrc')) {
+    function resolveHomeAchievementImageSrc(string $rawImage): string
+    {
+        $img = trim($rawImage);
+        if ($img === '') {
+            return '';
+        }
+        if (preg_match('#^https?://#i', $img)) {
+            return $img;
+        }
+        return ltrim($img, '/');
+    }
+}
+
+if (!function_exists('hasHomeAchievementImage')) {
+    function hasHomeAchievementImage(string $rawImage): bool
+    {
+        $img = trim($rawImage);
+        if ($img === '') {
+            return false;
+        }
+        if (preg_match('#^https?://#i', $img)) {
+            return true;
+        }
+        $clean = ltrim($img, '/');
+        return file_exists(__DIR__ . '/' . $clean) || file_exists($clean);
+    }
+}
+
 $achJsonPath = __DIR__ . '/data/achievements_cards.json';
 $homeAchCardsList = [];
 
@@ -411,13 +440,19 @@ include 'partials/header.php';
     <p data-i18n="index.achievement.desc">🏆 Sekilas pencapaian yang membentuk perjalanan akademik saya.</p>
 
     <div class="fluid-card-grid">
-        <?php foreach ($homeAchCardsList as $item): 
-            $hasImg = !empty($item['image']) && file_exists($item['image']);
+        <?php foreach ($homeAchCardsList as $item):
+            $rawImg = (string) ($item['image'] ?? '');
+            $hasImg = hasHomeAchievementImage($rawImg);
+            $imgSrc = resolveHomeAchievementImageSrc($rawImg);
         ?>
             <div class="ach-preview-card">
                 <div class="card-thumb-banner">
                     <?php if ($hasImg): ?>
-                        <img src="<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['title_en'] ?? '') ?>" loading="lazy">
+                        <img src="<?= htmlspecialchars($imgSrc) ?>" alt="<?= htmlspecialchars($item['title_en'] ?? '') ?>" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div style="display: none; flex-direction: column; align-items: center; gap: 4px;">
+                            <span class="card-thumb-icon"><?= htmlspecialchars($item['icon'] ?? '🏆') ?></span>
+                            <span style="font-size: 9px; letter-spacing: 0.8px; text-transform: uppercase; color: rgba(255,255,255,0.45); font-weight: 700;">Verified Award</span>
+                        </div>
                     <?php else: ?>
                         <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
                             <span class="card-thumb-icon"><?= htmlspecialchars($item['icon'] ?? '🏆') ?></span>
@@ -468,14 +503,14 @@ include 'partials/header.php';
     <p data-i18n="index.projects.desc">Setiap proyek berawal dari rasa ingin tahu. Berikut beberapa hal yang telah saya bangun selama perjalanan belajar saya.</p>
 
     <div class="fluid-card-grid">
-        <?php foreach ($homeProjectsList as $proj): 
+        <?php foreach ($homeProjectsList as $proj):
             $projThumb = !empty($proj['thumbnail']) ? $proj['thumbnail'] : '';
             $projTitle = $proj['title'];
             $projCat   = $proj['category'];
             $projDesc  = $proj['overview'];
             $projSlug  = $proj['slug'] ?? '';
             $projType  = $proj['type'] ?? 'single';
-            
+
             // Mengarahkan tombol Detail Studi Kasus ke halaman detail project Next.js yang sesuai
             $targetUrl = ($projType === 'multi') ? "projects/collection/$projSlug" : "projects/$projSlug";
             $portfolioBaseUrl = defined('PORTFOLIO_URL') ? PORTFOLIO_URL : 'http://localhost:3000/';
@@ -529,7 +564,7 @@ include 'partials/header.php';
                 </p>
             <?php endif; ?>
 
-            <?php 
+            <?php
             if (!empty($cSec['blocks']) && is_array($cSec['blocks'])) {
                 $firstBlock = $cSec['blocks'][0];
                 $bType = $firstBlock['type'] ?? '';
@@ -548,7 +583,7 @@ include 'partials/header.php';
                             </div>
                         </div>
                     </div>
-            <?php 
+            <?php
                 } elseif ($bType === 'cards' && !empty($firstBlock['items'])) {
             ?>
                     <div class="fluid-card-grid">
@@ -564,7 +599,7 @@ include 'partials/header.php';
                             </div>
                         <?php endforeach; ?>
                     </div>
-            <?php 
+            <?php
                 } elseif ($bType === 'timeline' && !empty($firstBlock['items'])) {
             ?>
                     <div class="home-timeline-wrapper">
@@ -580,7 +615,7 @@ include 'partials/header.php';
                             </div>
                         <?php endforeach; ?>
                     </div>
-            <?php 
+            <?php
                 } elseif ($bType === 'article') {
             ?>
                     <div class="card" style="padding: 24px; margin-top: 10px;">
@@ -591,9 +626,9 @@ include 'partials/header.php';
                             <?= htmlspecialchars($firstBlock['content_id'] ?? '') ?>
                         </p>
                     </div>
-            <?php 
+            <?php
                 }
-            } 
+            }
             ?>
 
             <a href="explore.php?slug=<?= urlencode($cSec['slug'] ?? '') ?>" class="btn outline ach-dyn-text" data-id="<?= htmlspecialchars($cSec['btn_text_id'] ?? 'Pelajari Lebih Lanjut →') ?>" data-en="<?= htmlspecialchars($cSec['btn_text_en'] ?? 'Learn More →') ?>" style="margin-top:24px; display:inline-block;">

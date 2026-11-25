@@ -5,36 +5,58 @@ $topbarTitle = 'Overview / Dashboard';
 require_once __DIR__ . '/../supabase.php';
 require_once __DIR__ . '/partials/header.php';
 
+function readJsonArraySafe(string $path): array
+{
+    if (!file_exists($path)) {
+        return [];
+    }
+    $raw = file_get_contents($path);
+    if (!is_string($raw) || trim($raw) === '') {
+        return [];
+    }
+    $decoded = json_decode($raw, true);
+    return is_array($decoded) ? $decoded : [];
+}
+
 // Hitung total Custom Sections secara otomatis dari file JSON / data
 $sectionCount = 0;
 $sectionsPath = __DIR__ . '/../data/custom_sections.json'; // sesuaikan jika path file JSON custom sections Anda berbeda, atau fallback ke 0
-if (file_exists($sectionsPath)) {
-    $secData = json_decode(file_get_contents($sectionsPath), true);
-    if (is_array($secData)) { $sectionCount = count($secData); }
+$secData = readJsonArraySafe($sectionsPath);
+if ($secData !== []) {
+    $sectionCount = count($secData);
 } else {
     // Cek alternatif jika menggunakan format file lain atau array kosong
     $sectionsPathAlt = __DIR__ . '/../data/sections.json';
-    if (file_exists($sectionsPathAlt)) {
-        $secDataAlt = json_decode(file_get_contents($sectionsPathAlt), true);
-        if (is_array($secDataAlt)) { $sectionCount = count($secDataAlt); }
+    $secDataAlt = readJsonArraySafe($sectionsPathAlt);
+    if ($secDataAlt !== []) {
+        $sectionCount = count($secDataAlt);
     }
 }
 
 // Hitung total Pesan Masuk
 $msgCount = 0;
-$resMsg = supabase('messages?select=id');
-if (is_array($resMsg) && !isset($resMsg['error'])) {
-    $msgCount = count($resMsg);
+$resMsg = supabase('messages', 'GET', null, 'select=id');
+if (is_array($resMsg) && empty($resMsg['error']) && is_array($resMsg['data'] ?? null)) {
+    $msgCount = count($resMsg['data']);
 } else {
     $msgPath = __DIR__ . '/../data/messages.json';
-    if (file_exists($msgPath)) {
-        $mData = json_decode(file_get_contents($msgPath), true);
-        if (is_array($mData)) { $msgCount = count($mData); }
+    $mData = readJsonArraySafe($msgPath);
+    if ($mData !== []) {
+        $msgCount = count($mData);
     }
 }
 
-// Data Prestasi & Sertifikat
+// Data Prestasi & Sertifikat (otomatis dari JSON jika tersedia, fallback ke 6)
 $achieveCount = 6;
+$achData = readJsonArraySafe(__DIR__ . '/../data/achievements_cards.json');
+if ($achData !== []) {
+    $medalsCount = is_array($achData['medals'] ?? null) ? count($achData['medals']) : 0;
+    $certsCount  = is_array($achData['certificates'] ?? null) ? count($achData['certificates']) : 0;
+    $totalAch    = $medalsCount + $certsCount;
+    if ($totalAch > 0) {
+        $achieveCount = $totalAch;
+    }
+}
 ?>
 
 <style>
@@ -278,7 +300,7 @@ $achieveCount = 6;
             <span class="metric-lbl">Total Sections</span>
             <span class="metric-icon-bubble">🧩</span>
         </div>
-        <div class="metric-number"><?= $sectionCount ?></div>
+        <div class="metric-number"><?= (int) $sectionCount ?></div>
         <div class="metric-note">Custom Sections Aktif</div>
     </div>
 
@@ -287,7 +309,7 @@ $achieveCount = 6;
             <span class="metric-lbl">Achievements</span>
             <span class="metric-icon-bubble" style="background:rgba(251,191,36,0.1); color:#fbbf24;">🏆</span>
         </div>
-        <div class="metric-number" style="color:#fbbf24;"><?= $achieveCount ?></div>
+        <div class="metric-number" style="color:#fbbf24;"><?= (int) $achieveCount ?></div>
         <div class="metric-note">Medali &amp; Sertifikat</div>
     </div>
 
@@ -296,7 +318,7 @@ $achieveCount = 6;
             <span class="metric-lbl">Pesan Masuk</span>
             <span class="metric-icon-bubble">✉️</span>
         </div>
-        <div class="metric-number"><?= $msgCount ?></div>
+        <div class="metric-number"><?= (int) $msgCount ?></div>
         <div class="metric-note">Formulir Kontak</div>
     </div>
 
