@@ -8,12 +8,14 @@
     { "src": "education.php", "use": "vercel-php@0.7.1" },
     { "src": "explore.php", "use": "vercel-php@0.7.1" },
     { "src": "journey.php", "use": "vercel-php@0.7.1" },
+    { "src": "api/crud.php", "use": "vercel-php@0.7.1" },
     { "src": "lang/*.json", "use": "@vercel/static" },
     { "src": "**/*.css", "use": "@vercel/static" },
     { "src": "**/*.js", "use": "@vercel/static" },
     { "src": "**/*.{png,jpg,jpeg,webp,svg,ico,woff2,woff,ttf,map}", "use": "@vercel/static" }
   ],
   "routes": [
+    { "src": "/api/crud(\\.php)?", "dest": "/api/crud.php" },
     { "src": "/about(\\.php)?", "dest": "/about.php" },
     { "src": "/achievement(\\.php)?", "dest": "/achievement.php" },
     { "src": "/archive(\\.php)?", "dest": "/archive.php" },
