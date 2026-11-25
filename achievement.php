@@ -7,6 +7,35 @@ include 'partials/header.php';
 $achPath = __DIR__ . '/data/achievements_cards.json';
 $achData = file_exists($achPath) ? (json_decode(file_get_contents($achPath), true) ?: []) : [];
 
+function resolveAchievementImageSrc(string $rawImage): string
+{
+    $img = trim($rawImage);
+    if ($img === '') {
+        return '';
+    }
+    if (preg_match('#^https?://#i', $img)) {
+        return $img;
+    }
+    $clean = ltrim($img, '/');
+    if (file_exists(__DIR__ . '/' . $clean) || file_exists($clean)) {
+        return $clean;
+    }
+    return $clean;
+}
+
+function hasAchievementImage(string $rawImage): bool
+{
+    $img = trim($rawImage);
+    if ($img === '') {
+        return false;
+    }
+    if (preg_match('#^https?://#i', $img)) {
+        return true;
+    }
+    $clean = ltrim($img, '/');
+    return file_exists(__DIR__ . '/' . $clean) || file_exists($clean);
+}
+
 $medals = !empty($achData['medals']) ? $achData['medals'] : [
     [
         'image'     => '',
@@ -351,14 +380,21 @@ $certs = !empty($achData['certificates']) ? $achData['certificates'] : [
     <h2 class="section-heading" style="font-size:22px; margin-bottom:12px;" data-i18n="ach.feat.heading">Momen yang Berharga</h2>
 
     <div class="ach-grid-4-cols">
-        <?php foreach ($medals as $m): 
-            $hasImage = !empty($m['image']) && file_exists($m['image']);
+        <?php foreach ($medals as $m):
+            $rawImg   = (string) ($m['image'] ?? '');
+            $hasImage = hasAchievementImage($rawImg);
+            $imgSrc   = resolveAchievementImageSrc($rawImg);
             $hasLink  = !empty($m['link']) && $m['link'] !== '#';
+            $modalTitle = (string) ($m['title_en'] ?? $m['title_id'] ?? 'Certificate');
         ?>
             <div class="ach-compact-card">
                 <div class="ach-media-box">
                     <?php if ($hasImage): ?>
-                        <img src="<?= htmlspecialchars($m['image']) ?>" alt="<?= htmlspecialchars($m['title_en'] ?? '') ?>" loading="lazy">
+                        <img src="<?= htmlspecialchars($imgSrc) ?>" alt="<?= htmlspecialchars($m['title_en'] ?? '') ?>" loading="lazy" onerror="this.closest('.ach-media-box').querySelector('.media-fallback-art')?.classList.remove('is-hidden'); this.remove();">
+                        <div class="media-fallback-art is-hidden" style="display:none;">
+                            <span class="icon"><?= htmlspecialchars($m['icon'] ?? '🥇') ?></span>
+                            <span class="text">Official Award</span>
+                        </div>
                     <?php else: ?>
                         <div class="media-fallback-art">
                             <span class="icon"><?= htmlspecialchars($m['icon'] ?? '🥇') ?></span>
@@ -379,7 +415,7 @@ $certs = !empty($achData['certificates']) ? $achData['certificates'] : [
 
                     <div class="ach-action-bar">
                         <?php if ($hasImage): ?>
-                            <button type="button" class="btn-action-cert" onclick="openCertLightbox('<?= htmlspecialchars($m['image']) ?>', '<?= htmlspecialchars(addslashes($m['title_en'] ?? $m['title_id'] ?? 'Certificate')) ?>')">
+                            <button type="button" class="btn-action-cert" onclick='openCertLightbox(<?= json_encode($imgSrc, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP) ?>, <?= json_encode($modalTitle, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP) ?>)'>
                                 <span>Lihat Sertifikat</span> <span>↗</span>
                             </button>
                         <?php elseif ($hasLink): ?>
@@ -405,14 +441,21 @@ $certs = !empty($achData['certificates']) ? $achData['certificates'] : [
     <h2 class="section-heading" style="font-size:22px; margin-bottom:12px;" data-i18n="ach.cert.heading">Pengakuan Tambahan</h2>
 
     <div class="ach-grid-4-cols">
-        <?php foreach ($certs as $c): 
-            $hasImage = !empty($c['image']) && file_exists($c['image']);
+        <?php foreach ($certs as $c):
+            $rawImg   = (string) ($c['image'] ?? '');
+            $hasImage = hasAchievementImage($rawImg);
+            $imgSrc   = resolveAchievementImageSrc($rawImg);
             $hasLink  = !empty($c['link']) && $c['link'] !== '#';
+            $modalTitle = (string) ($c['title_en'] ?? $c['title_id'] ?? 'Certificate');
         ?>
             <div class="ach-compact-card">
                 <div class="ach-media-box">
                     <?php if ($hasImage): ?>
-                        <img src="<?= htmlspecialchars($c['image']) ?>" alt="<?= htmlspecialchars($c['title_en'] ?? '') ?>" loading="lazy">
+                        <img src="<?= htmlspecialchars($imgSrc) ?>" alt="<?= htmlspecialchars($c['title_en'] ?? '') ?>" loading="lazy" onerror="this.closest('.ach-media-box').querySelector('.media-fallback-art')?.classList.remove('is-hidden'); this.remove();">
+                        <div class="media-fallback-art is-hidden" style="display:none;">
+                            <span class="icon"><?= htmlspecialchars($c['icon'] ?? '📜') ?></span>
+                            <span class="text">Certified Credential</span>
+                        </div>
                     <?php else: ?>
                         <div class="media-fallback-art">
                             <span class="icon"><?= htmlspecialchars($c['icon'] ?? '📜') ?></span>
@@ -433,7 +476,7 @@ $certs = !empty($achData['certificates']) ? $achData['certificates'] : [
 
                     <div class="ach-action-bar">
                         <?php if ($hasImage): ?>
-                            <button type="button" class="btn-action-cert" onclick="openCertLightbox('<?= htmlspecialchars($c['image']) ?>', '<?= htmlspecialchars(addslashes($c['title_en'] ?? $c['title_id'] ?? 'Certificate')) ?>')">
+                            <button type="button" class="btn-action-cert" onclick='openCertLightbox(<?= json_encode($imgSrc, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP) ?>, <?= json_encode($modalTitle, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP) ?>)'>
                                 <span>Lihat Sertifikat</span> <span>↗</span>
                             </button>
                         <?php elseif ($hasLink): ?>

@@ -10,6 +10,8 @@ $idPath    = __DIR__ . '/../lang/id.json';
 $achPath   = __DIR__ . '/../data/achievements_cards.json';
 $uploadDir = __DIR__ . '/../assets/img/';
 
+$isVercelEnv = !empty($_ENV['VERCEL']) || !empty(getenv('VERCEL'));
+
 if (!is_dir($uploadDir)) {
     @mkdir($uploadDir, 0755, true);
 }
@@ -97,16 +99,21 @@ if (empty($achData['certificates'])) {
 $medals = $achData['medals'];
 $certs  = $achData['certificates'];
 $success = '';
+$uploadNotice = '';
 
 // Helper fungsi upload gambar
 function handleFileUpload($fileInputName, $oldImagePath = '') {
-    global $uploadDir;
+    global $uploadDir, $isVercelEnv, $uploadNotice;
     if (isset($_FILES[$fileInputName]) && $_FILES[$fileInputName]['error'] === UPLOAD_ERR_OK) {
+        if ($isVercelEnv) {
+            $uploadNotice = 'Di Vercel, upload file lokal tidak tersimpan permanen. Gunakan URL gambar atau simpan file ke repo.';
+            return $oldImagePath;
+        }
         $tmpName   = $_FILES[$fileInputName]['tmp_name'];
         $origName  = basename($_FILES[$fileInputName]['name']);
         $extension = strtolower(pathinfo($origName, PATHINFO_EXTENSION));
         $allowed   = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'svg'];
-        
+
         if (in_array($extension, $allowed)) {
             $newName = 'cert_' . time() . '_' . uniqid() . '.' . $extension;
             $destPath = $uploadDir . $newName;
@@ -140,8 +147,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $enData[$k] = $enVal;
         }
         supabase('translations', 'POST', $batch, 'on_conflict=key');
-        file_put_contents($idPath, json_encode($idData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-        file_put_contents($enPath, json_encode($enData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        @file_put_contents($idPath, json_encode($idData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        @file_put_contents($enPath, json_encode($enData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
 
     // 2. Simpan Medali
@@ -210,11 +217,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $achData['medals']       = !empty($newMedals) ? $newMedals : $defaultData['medals'];
     $achData['certificates'] = !empty($newCerts) ? $newCerts : $defaultData['certificates'];
-    file_put_contents($achPath, json_encode($achData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+    @file_put_contents($achPath, json_encode($achData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 
     $medals = $achData['medals'];
     $certs  = $achData['certificates'];
-    $success = 'Data Prestasi & Sertifikat berhasil disimpan!';
+    $success = 'Data Prestasi & Sertifikat berhasil disimpan!' . ($uploadNotice ? ' (' . $uploadNotice . ')' : '');
 }
 
 $enDict = file_exists($enPath) ? json_decode(file_get_contents($enPath), true) : [];
