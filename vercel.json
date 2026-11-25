@@ -1,18 +1,19 @@
 {
   "builds": [
-    { "src": "index.php", "use": "vercel-php@0.7.1" },
-    { "src": "about.php", "use": "vercel-php@0.7.1" },
-    { "src": "projects.php", "use": "vercel-php@0.7.1" },
-    { "src": "contact.php", "use": "vercel-php@0.7.1" },
-    { "src": "admin/index.php", "use": "vercel-php@0.7.1" },
-    { "src": "admin/login.php", "use": "vercel-php@0.7.1" }
+    { "src": "index.php", "use": "vercel-php@0.7.1" }
   ],
   "routes": [
-    { "src": "/about", "dest": "/about.php" },
-    { "src": "/projects", "dest": "/projects.php" },
-    { "src": "/contact", "dest": "/contact.php" },
-    { "src": "/admin/login", "dest": "/admin/login.php" },
-    { "src": "/admin", "dest": "/admin/index.php" },
-    { "src": "/(.*)", "dest": "/index.php" }
+    {
+      "src": "/(.*\\.(css|js|png|jpg|jpeg|webp|svg|ico|woff2?|ttf|map))",
+      "dest": "/$1"
+    },
+    {
+      "src": "/(assets|css|js|images|img|uploads)/(.*)",
+      "dest": "/$1/$2"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.php"
+    }
   ]
 }
